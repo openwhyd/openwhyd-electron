@@ -1,5 +1,11 @@
 {
-  "name"    : "openwhyd-electron",
-  "version" : "0.1.0",
-  "main"    : "main.js"
+  "name": "openwhyd-electron",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^1.4.13"
+  }
 }
