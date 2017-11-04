@@ -1,11 +1,11 @@
 {
   "name": "openwhyd-electron",
   "version": "0.1.0",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "postinstall": "# brew install wine # in order to build for win32 from macos/darwin",
-    "build": "electron-packager . Openwhyd --icon \"icon\" --out build --overwrite --all",
-    "build-darwin": "electron-packager . Openwhyd --icon \"icon\" --out build --overwrite --platform=darwin",
+    "build": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --all",
+    "build-darwin": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --platform=darwin",
     "start": "electron ."
   },
   "dependencies": {
