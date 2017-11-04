@@ -3,7 +3,7 @@
 [Openwhyd](https://openwhyd.org) as a native app for your favorite OS, powered by Electron.
 This installable application allows to play Openwhyd tracks in the background! 👌
 
-![screenshot](screenshot.png)
+![screenshot](docs/screenshot.png)
 
 Download and install the file corresponding to your Operating System, from [that list](https://github.com/openwhyd/openwhyd-electron/releases).
 
