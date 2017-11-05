@@ -1,0 +1,77 @@
+@import "http://openwhyd.org/css/common.css?1.0.14";
+
+.button,
+.button__hollow {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+    font-family: 'AvenirNext-Medium', Helvetica, Arial, Sans-serif;
+    color: #fff;
+    background: #3177AF;
+    border-color: #3177AF;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+.button:hover {
+    background: #62A1D3;
+    border-color: #62A1D3;
+    color: #fff;
+}
+
+.button__hollow {
+    background: transparent;
+    border: 1px solid #fff;
+}
+
+.download--intro {
+    background: #333;
+    color: #fff;
+}
+
+.download--header {
+    box-sizing: border-box;
+    max-width: 980px;
+    height: 56px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255, 0.2);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.download--hero {
+    box-sizing: border-box;
+    min-height: 540px;
+    text-align: center;
+    padding: 36px 0 0 0;
+    background: #333 url(hero.png) no-repeat center 230px;
+    background-size: 980px 600px;
+}
+
+    .hero--text {
+        font-size: 16px;
+    }
+
+    .hero--download {
+        margin: 24px 0;
+    }
+
+.download--downloads {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.download--faq {
+    max-width: 980px;
+    margin: 24px auto;
+    padding: 24px 0;
+    border-top: 1px solid #EEE;
+}
+    .download--faq p {
+        margin: 16px 0;
+    }
