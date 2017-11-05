@@ -36,10 +36,12 @@ function initFacebookLogin(win, FB_APP_ID, URL_PREFIX) {
   })
 
   win.webContents.on('new-window', (evt, url) => {
-    evt.preventDefault()
-    // TODO: test if facebook login url
-    const redirect = 'https://www.facebook.com/connect/login_success.html'
-    win.loadURL(`https://www.facebook.com/v2.10/dialog/oauth?client_id=${FB_APP_ID}&redirect_uri=${redirect}&response_type=token`)
+    if (/^https:\/\/www.facebook.com/.test(url)) {
+      evt.preventDefault()
+      console.log('⚡️  intercepted facebook connect popup:', url)
+      const redirect = 'https://www.facebook.com/connect/login_success.html'
+      win.loadURL(`https://www.facebook.com/v2.10/dialog/oauth?client_id=${FB_APP_ID}&redirect_uri=${redirect}&response_type=token`)
+    }
   })
 }
 
