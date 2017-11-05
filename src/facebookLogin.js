@@ -2,8 +2,9 @@ const { httpGet, httpPost, showError } = require('./helpers')
 
 function initFacebookLogin(win, FB_APP_ID, URL_PREFIX) {
 
+  console.log('🔐  Facebook Login for', { FB_APP_ID, URL_PREFIX })
+
   win.webContents.on('did-navigate', (evt, url) => {
-    console.log('⚡️  did-navigate', url)
     // intercept login/auth response from facebook
     if (url.match(/^https\:\/\/www.facebook.com\/connect\/login_success.html#access_token=([^&$]+)/)) {
       const token = RegExp.$1
@@ -36,7 +37,6 @@ function initFacebookLogin(win, FB_APP_ID, URL_PREFIX) {
 
   win.webContents.on('new-window', (evt, url) => {
     evt.preventDefault()
-    console.log('⚡️  intercepted new window event:', url)
     // TODO: test if facebook login url
     const redirect = 'https://www.facebook.com/connect/login_success.html'
     win.loadURL(`https://www.facebook.com/v2.10/dialog/oauth?client_id=${FB_APP_ID}&redirect_uri=${redirect}&response_type=token`)

@@ -27,9 +27,8 @@ function createWindow () {
   win = new BrowserWindow(BROWSER_WINDOW_SETTINGS)
   
   if (TROUBLESHOOTING) {
-    // clear cookies on start, https://stackoverflow.com/a/37521169/592254
-    session.defaultSession.clearStorageData([], (data) => {}) // for testing / troubleshooting
-    win.webContents.openDevTools() // for testing / troubleshooting
+    session.defaultSession.clearStorageData([], (data) => {}) // clear cookies and local storage
+    win.webContents.openDevTools()
   }
 
   Menu.setApplicationMenu(menu)
@@ -38,10 +37,14 @@ function createWindow () {
 
   initFacebookLogin(win, FB_APP_ID, URL_PREFIX)
 
+  win.webContents.on('did-navigate', (evt, url) =>
+    console.log('⚡️  did-navigate', url)
+  )
+
   // Emitted when the window is closed.
-  win.on('closed', () => {
+  win.on('closed', () =>
     win = null // to allow garbage collection
-  })
+  )
 }
 
 // Electron is ready to create browser windows, and APIs can be used
