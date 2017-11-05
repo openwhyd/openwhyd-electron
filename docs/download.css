@@ -75,3 +75,15 @@
     .download--faq p {
         margin: 16px 0;
     }
+
+.hero--download {
+    display: none;
+}
+
+body.os-other .hero--download.for-other,
+body.os-ios .hero--download.for-ios,
+body.os-windows .hero--download.for-windows,
+body.os-osx .hero--download.for-osx,
+body.os-linux .hero--download.for-linux {
+    display: block;
+}

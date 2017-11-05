@@ -10,7 +10,7 @@
     <base target="_parent"> <!-- to open links properly from openwhyd.org/download's iframe -->
 </head>
 
-<body>
+<body class="os-other">
 <div class="download--intro">
     <div class="download--header">
         <a href="https://openwhyd.org/" class="header--logo"><img src="https://openwhyd.org/images/logo-white.png" alt="Openwhyd"></a>
@@ -23,8 +23,20 @@
         <li>Collect and share the best music in the world</li>
         <li>Play tracks in background</li>
     </ul>
-    <div class="hero--download">
-        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v0.2.0/Openwhyd-mas-x64.zip" class="button">Download v0.2 for Mac</a>
+    <div class="hero--download for-other">
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/latest" class="button">Download Openwhyd Electron</a>
+    </div>
+    <div class="hero--download for-ios">
+        <a href="https://openwhyd.org/iphone" class="button">Download for iOS</a>
+    </div>
+    <div class="hero--download for-windows">
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v0.2.0/Openwhyd-win32-ia32.zip" class="button">Download v0.2 for Windows</a>
+    </div>
+    <div class="hero--download for-osx">
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v0.2.0/Openwhyd-darwin-x64.zip" class="button">Download v0.2 for Mac</a>
+    </div>
+    <div class="hero--download for-linux">
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v0.2.0/Openwhyd-linux-ia32.zip" class="button">Download v0.2 for Linux</a>
     </div>
 </div>
 </div>
@@ -49,6 +61,14 @@
     </p>
 </div>
 
+<script>
+    var osName, ua = window.navigator.userAgent;
+    if (/iPhone|iPad|iPod/i.test(ua)) osName = 'os-ios';
+    else if (ua.indexOf('Windows' ) !== -1) osName = 'os-windows';
+    else if (ua.indexOf('Mac') !== -1) osName = 'os-osx';
+    else if (ua.indexOf('Linux') !== -1) osName = 'os-linux';
+    if (osName) document.body.className = osName;
+</script>
 
 </body>
 
