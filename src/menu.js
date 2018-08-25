@@ -27,6 +27,14 @@ const template = [
           win.webContents.executeJavaScript('window.history.back()')
         }
       },
+      {
+        label: 'Forward',
+        click() {
+          accelerator: 'CmdOrCtrl+]',
+          win.webContents.executeJavaScript('window.history.forward()')
+        }
+      },
+      {type: 'separator'},
       {role: 'reload'},
       {role: 'toggledevtools'},
       {type: 'separator'},
