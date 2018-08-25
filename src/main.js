@@ -1,6 +1,7 @@
 const { app, session, BrowserWindow, Menu } = require('electron')
 const { menu } = require('./menu')
 const { initFacebookLogin } = require('./facebookLogin')
+const mediaKeys = require('./mediaKeys.js')
 
 require('electron-debug')({
   enabled: true, // => DevTools are also usable in production
@@ -54,6 +55,8 @@ function createWindow () {
     details.requestHeaders['User-Agent'] = electronVer
     callback({ cancel: false, requestHeaders: details.requestHeaders })
   })
+
+  mediaKeys.setup({ win })
 }
 
 // Electron is ready to create browser windows, and APIs can be used
