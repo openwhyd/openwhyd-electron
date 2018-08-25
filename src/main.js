@@ -33,7 +33,10 @@ function createWindow () {
 
   Menu.setApplicationMenu(menu)
   win.setMenu(menu) // for linux and windows only (necessary?)
-  win.loadURL(URL_PREFIX)
+
+  const ua = win.webContents.getUserAgent()
+  const electronVer = (ua.match(/openwhyd-electron\/[^ ]*/) || [])[0]
+  win.loadURL(URL_PREFIX, { userAgent: electronVer })
 
   initFacebookLogin(win, FB_APP_ID, URL_PREFIX)
 
@@ -45,6 +48,12 @@ function createWindow () {
   win.on('closed', () =>
     win = null // to allow garbage collection
   )
+
+  // Force custom user agent for tracking in Google Analytics
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders['User-Agent'] = electronVer
+    callback({ cancel: false, requestHeaders: details.requestHeaders })
+  })
 }
 
 // Electron is ready to create browser windows, and APIs can be used
