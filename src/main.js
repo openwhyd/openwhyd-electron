@@ -1,5 +1,5 @@
-const { app, session, BrowserWindow, Menu } = require('electron')
-const { menu } = require('./menu')
+const { app, session, BrowserWindow } = require('electron')
+const menu = require('./menu')
 const { initFacebookLogin } = require('./facebookLogin')
 const mediaKeys = require('./mediaKeys.js')
 
@@ -32,8 +32,8 @@ function createWindow () {
     win.webContents.openDevTools()
   }
 
-  Menu.setApplicationMenu(menu)
-  win.setMenu(menu) // for linux and windows only (necessary?)
+  // setup the app/window menu
+  menu.setup({ win });
 
   const ua = win.webContents.getUserAgent()
   const electronVer = (ua.match(/openwhyd-electron\/[^ ]*/) || [])[0]
