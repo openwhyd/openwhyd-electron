@@ -22,15 +22,15 @@ const template = [
     submenu: [
       {
         label: 'Back',
-        click() {
-          accelerator: 'CmdOrCtrl+[',
+        accelerator: 'CmdOrCtrl+[',
+        click () {
           win.webContents.executeJavaScript('window.history.back()')
         }
       },
       {
         label: 'Forward',
-        click() {
-          accelerator: 'CmdOrCtrl+]',
+        accelerator: 'CmdOrCtrl+]',
+        click () {
           win.webContents.executeJavaScript('window.history.forward()')
         }
       },

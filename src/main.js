@@ -12,12 +12,12 @@ const TROUBLESHOOTING = false
 const URL_PREFIX = 'https://openwhyd.org'
 const FB_APP_ID = 169250156435902
 const BROWSER_WINDOW_SETTINGS = {
-  icon: __dirname + '/icon.ico',
+  icon: `${__dirname}/icon.ico`,
   width: 1024,
   height: 900,
   webPreferences: {
-    nodeIntegration: false, // to let jquery load in web mode
-  },
+    nodeIntegration: false // to let jquery load in web mode
+  }
 }
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -26,14 +26,14 @@ let win
 
 function createWindow () {
   win = new BrowserWindow(BROWSER_WINDOW_SETTINGS)
-  
+
   if (TROUBLESHOOTING) {
     session.defaultSession.clearStorageData([], (data) => {}) // clear cookies and local storage
     win.webContents.openDevTools()
   }
 
   // setup the app/window menu
-  menu.setup({ win });
+  menu.setup({ win })
 
   const ua = win.webContents.getUserAgent()
   const electronVer = (ua.match(/openwhyd-electron\/[^ ]*/) || [])[0]
@@ -46,14 +46,14 @@ function createWindow () {
   )
 
   // Emitted when the window is closed.
-  win.on('closed', () =>
+  win.on('closed', () => {
     win = null // to allow garbage collection
-  )
+  })
 
   // Force custom user agent for tracking in Google Analytics
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['User-Agent'] = electronVer
-    callback({ cancel: false, requestHeaders: details.requestHeaders })
+    callback({ cancel: false, requestHeaders: details.requestHeaders }) // eslint-disable-line
   })
 
   mediaKeys.setup({ win })
