@@ -1,12 +1,11 @@
 const { httpGet, httpPost, showError } = require('./helpers')
 
-function initFacebookLogin(win, FB_APP_ID, URL_PREFIX) {
-
+function initFacebookLogin (win, FB_APP_ID, URL_PREFIX) {
   console.log('🔐  Facebook Login for', { FB_APP_ID, URL_PREFIX })
 
   win.webContents.on('did-navigate', (evt, url) => {
     // intercept login/auth response from facebook
-    if (url.match(/^https\:\/\/www.facebook.com\/connect\/login_success.html#access_token=([^&$]+)/)) {
+    if (url.match(/^https:\/\/www.facebook.com\/connect\/login_success.html#access_token=([^&$]+)/)) {
       const token = RegExp.$1
       console.log('🔐  got fb access token:', token)
       // get facebook user id (required by openwhyd api)

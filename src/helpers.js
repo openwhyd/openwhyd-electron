@@ -1,6 +1,6 @@
 const { net, dialog } = require('electron')
 
-function httpReq(options, data, callback) {
+function httpReq (options, data, callback) {
   const req = net.request(options)
   req.on('response', (res) => {
     let rawData = ''
@@ -25,16 +25,16 @@ function httpReq(options, data, callback) {
   return req
 }
 
-function httpGet(options, callback) {
+function httpGet (options, callback) {
   return httpReq(options, null, callback)
 }
 
-function httpPost(options, data, callback) {
+function httpPost (options, data, callback) {
   return httpReq(Object.assign({ method: 'post' }, options), data, callback)
 }
 
-function showError(err) {
-  dialog.showMessageBox({ type: 'error', message: err.message || JSON.stringify(err) })  
+function showError (err) {
+  dialog.showMessageBox({ type: 'error', message: err.message || JSON.stringify(err) })
 }
 
 exports.httpGet = httpGet

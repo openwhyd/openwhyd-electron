@@ -1,6 +1,7 @@
-const { app, session, BrowserWindow, Menu } = require('electron')
-const { menu } = require('./menu')
+const { app, session, BrowserWindow } = require('electron')
+const menu = require('./menu')
 const { initFacebookLogin } = require('./facebookLogin')
+const mediaKeys = require('./mediaKeys.js')
 
 require('electron-debug')({
   enabled: true, // => DevTools are also usable in production
@@ -11,12 +12,12 @@ const TROUBLESHOOTING = false
 const URL_PREFIX = 'https://openwhyd.org'
 const FB_APP_ID = 169250156435902
 const BROWSER_WINDOW_SETTINGS = {
-  icon: __dirname + '/icon.ico',
+  icon: `${__dirname}/icon.ico`,
   width: 1024,
   height: 900,
   webPreferences: {
-    nodeIntegration: false, // to let jquery load in web mode
-  },
+    nodeIntegration: false // to let jquery load in web mode
+  }
 }
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -25,15 +26,18 @@ let win
 
 function createWindow () {
   win = new BrowserWindow(BROWSER_WINDOW_SETTINGS)
-  
+
   if (TROUBLESHOOTING) {
     session.defaultSession.clearStorageData([], (data) => {}) // clear cookies and local storage
     win.webContents.openDevTools()
   }
 
-  Menu.setApplicationMenu(menu)
-  win.setMenu(menu) // for linux and windows only (necessary?)
-  win.loadURL(URL_PREFIX)
+  // setup the app/window menu
+  menu.setup({ win })
+
+  const ua = win.webContents.getUserAgent()
+  const electronVer = (ua.match(/openwhyd-electron\/[^ ]*/) || [])[0]
+  win.loadURL(URL_PREFIX, { userAgent: electronVer })
 
   initFacebookLogin(win, FB_APP_ID, URL_PREFIX)
 
@@ -42,9 +46,17 @@ function createWindow () {
   )
 
   // Emitted when the window is closed.
-  win.on('closed', () =>
+  win.on('closed', () => {
     win = null // to allow garbage collection
-  )
+  })
+
+  // Force custom user agent for tracking in Google Analytics
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders['User-Agent'] = electronVer
+    callback({ cancel: false, requestHeaders: details.requestHeaders }) // eslint-disable-line
+  })
+
+  mediaKeys.setup({ win })
 }
 
 // Electron is ready to create browser windows, and APIs can be used
