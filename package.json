@@ -1,6 +1,6 @@
 {
   "name": "openwhyd-electron",
-  "version": "0.2.0",
+  "version": "1.0.0-rc.1",
   "main": "src/main.js",
   "scripts": {
     "postinstall": "# brew install wine # in order to build for win32 from macos/darwin",
