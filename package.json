@@ -12,6 +12,7 @@
   "dependencies": {
     "electron": "1.4.13",
     "electron-debug": "1.4.0",
+    "electron-download": "4.1.0",
     "electron-packager": "8.4.0"
   },
   "devDependencies": {
