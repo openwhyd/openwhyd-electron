@@ -15,7 +15,7 @@ Download and install the file corresponding to your Operating System, from [that
 
 ### Dev Setup
 
-1. Run openwhyd locally following the install guide `https://github.com/openwhyd/openwhyd/blob/master/docs/INSTALL.md`
+1. Run openwhyd locally following the install guide [https://github.com/openwhyd/openwhyd/blob/master/docs/INSTALL.md](https://github.com/openwhyd/openwhyd/blob/master/docs/INSTALL.md)
 2. clone `https://github.com/openwhyd/openwhyd-electron` on your computer.
 3. Modify the `const URL_PREFIX` found in the file `src/main.js` from `https://openwhyd.org` to `http://localhost:8080`
 4. Now open a second terminal window and type the following commands
