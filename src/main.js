@@ -12,7 +12,7 @@ const TROUBLESHOOTING = false
 const URL_PREFIX = 'https://openwhyd.org'
 const FB_APP_ID = 169250156435902
 const BROWSER_WINDOW_SETTINGS = {
-  icon: `${__dirname}/icon.ico`,
+  icon: `${__dirname}/../icon.png`,
   width: 1024,
   height: 900,
   webPreferences: {
