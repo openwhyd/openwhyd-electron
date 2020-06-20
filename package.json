@@ -3,7 +3,7 @@
   "version": "1.0.0-rc.1",
   "main": "src/main.js",
   "scripts": {
-    "postinstall": "# brew install wine # in order to build for win32 from macos/darwin",
+    "postinstall": "# brew cask install xquartz wine-stable # in order to build for win32 from macos/darwin",
     "prebuild": "standard",
     "build": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --all",
     "build:darwin": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --platform=darwin",
