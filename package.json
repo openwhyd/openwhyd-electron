@@ -1,6 +1,6 @@
 {
   "name": "openwhyd-electron",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.1",
   "main": "src/main.js",
   "scripts": {
     "postinstall": "# brew cask install xquartz wine-stable # in order to build for win32 from macos/darwin",
