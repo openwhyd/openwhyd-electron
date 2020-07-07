@@ -10,7 +10,7 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "1.4.13",
+    "electron": "7.2.4",
     "electron-debug": "1.4.0",
     "electron-download": "4.1.0",
     "electron-packager": "8.4.0"
