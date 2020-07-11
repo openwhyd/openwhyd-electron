@@ -1,9 +1,9 @@
 const { globalShortcut } = require('electron')
 
 const KEY_MAPPING = {
-  'mediaplaypause': 'window.whydPlayer.playPause();',
-  'medianexttrack': 'window.whydPlayer.next();',
-  'mediaprevioustrack': 'window.whydPlayer.prev();'
+  mediaplaypause: 'window.whydPlayer.playPause();',
+  medianexttrack: 'window.whydPlayer.next();',
+  mediaprevioustrack: 'window.whydPlayer.prev();'
 }
 
 // Setup media keys
