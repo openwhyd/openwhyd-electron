@@ -1,21 +1,20 @@
 {
   "name": "openwhyd-electron",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "src/main.js",
   "scripts": {
     "postinstall": "# brew cask install xquartz wine-stable # in order to build for win32 from macos/darwin",
     "prebuild": "standard",
-    "build": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --all",
+    "build": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --platform=darwin,linux,win32 --arch=x64",
     "build:darwin": "electron-packager . Openwhyd --icon \"res/icon\" --out build --overwrite --platform=darwin",
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "1.4.13",
-    "electron-debug": "1.4.0",
-    "electron-download": "4.1.0",
-    "electron-packager": "8.4.0"
+    "electron-debug": "3.1.0"
   },
   "devDependencies": {
-    "standard": "^11.0.1"
+    "electron": "9.1.0",
+    "electron-packager": "15.0.0",
+    "standard": "^14.3.4"
   }
 }
