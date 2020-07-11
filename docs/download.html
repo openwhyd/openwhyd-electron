@@ -30,13 +30,13 @@
         <a href="https://openwhyd.org/iphone" class="button">Download for iOS</a>
     </div>
     <div class="hero--download for-windows">
-        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.0.1/Openwhyd-win32-ia32.zip" class="button">Download v1.0.1 for Windows</a>
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.1.0/Openwhyd-win32-x64.zip" class="button">Download v1.1.0 for Windows</a>
     </div>
     <div class="hero--download for-osx">
-        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.0.1/Openwhyd-darwin-x64.zip" class="button">Download v1.0.1 for Mac</a>
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.1.0/Openwhyd-darwin-x64.zip" class="button">Download v1.1.0 for Mac</a>
     </div>
     <div class="hero--download for-linux">
-        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.0.1/Openwhyd-linux-ia32.zip" class="button">Download v1.0.1 for Linux</a>
+        <a href="https://github.com/openwhyd/openwhyd-electron/releases/download/v1.1.0/Openwhyd-linux-x64.zip" class="button">Download v1.1.0 for Linux</a>
     </div>
 </div>
 </div>
@@ -70,59 +70,7 @@
     if (osName) {
         document.body.className = osName; // css rules will display the right div
 
-        // from https://github.com/feross/arch/blob/master/browser.js
-        var arch = (function arch () {
-            /**
-             * User agent strings that indicate a 64-bit OS.
-             * See: http://stackoverflow.com/a/13709431/292185
-             */
-            var userAgent = navigator.userAgent
-            if ([
-                'x86_64',
-                'x86-64',
-                'Win64',
-                'x64;',
-                'amd64',
-                'AMD64',
-                'WOW64',
-                'x64_64'
-            ].some(function (str) {
-                return userAgent.indexOf(str) > -1
-            })) {
-                return 'x64'
-            }
-    
-            /**
-             * Platform strings that indicate a 64-bit OS.
-             * See: http://stackoverflow.com/a/19883965/292185
-             */
-            var platform = navigator.platform
-            if (platform === 'MacIntel' || platform === 'Linux x86_64') {
-                return 'x64'
-            }
-    
-            /**
-             * CPU class strings that indicate a 64-bit OS.
-             * See: http://stackoverflow.com/a/6267019/292185
-             */
-            if (navigator.cpuClass === 'x64') {
-                return 'x64'
-            }
-    
-            /**
-             * If none of the above, assume the architecture is 32-bit.
-             */
-            return 'x86'
-        })();
-
         var links = document.querySelectorAll('.hero--download a[href]');
-
-        // generate download links for 64-bit architectures
-        if (arch === 'x64') {
-            links.forEach(function(link) {
-                link.href = link.href.replace('-ia32', '-x64');
-            });
-        }
 
         // scroll down after user clicks on a download link
         links.forEach(function(link) {
